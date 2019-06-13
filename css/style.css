@@ -1,0 +1,125 @@
+body {
+    font-family: 'Montserrat';
+    counter-reset: Serial;
+    text-align: center;
+    /* Set the Serial counter to 0 */
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url("../fonts/montserrat-regular-webfont.woff");
+}
+
+.heading {
+    font-size: 40px;
+    font-weight: 100;
+    color: #6F6A64;
+    display: flex;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    justify-content: center;
+}
+
+.search-items {
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 100px;
+}
+
+.flexbox {
+    display: flex;
+    min-width: 0;
+    max-width: 100%;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+input[type="text"] {
+    width: 600px;
+    height: 40px;
+    padding-left: 10px;
+    border-radius: 3px;
+}
+
+.search-btn {
+    border: 0;
+    padding: 10px;
+    font-size: large;
+    color: #fff;
+    background-color: #337AB7;
+    cursor: pointer;
+}
+
+.dropdown {
+    display: flex;
+    justify-content: center;
+}
+
+.list {
+    /* Remove default list styling */
+    list-style-type: none;
+    padding-right: 120px;
+    margin: 0;
+    width: 610px;
+}
+
+.list li a {
+    border: 1px solid #ddd;
+    /* Add a border to all links */
+    margin-top: -1px;
+    /* Prevent double borders */
+    background-color: #f6f6f6;
+    /* Grey background color */
+    padding: 12px;
+    /* Add some padding */
+    text-decoration: none;
+    /* Remove default text underline */
+    font-size: 18px;
+    /* Increase the font-size */
+    color: black;
+    /* Add a black text color */
+    display: block;
+    /* Make it into a block element to fill the whole list */
+}
+
+.list li a:hover:not(.header) {
+    background-color: #eee;
+    /* Add a hover effect to all links, except for headers */
+}
+
+.benefits-items {
+    flex-direction: column;
+    margin: 15px;
+    align-content: center;
+}
+
+.benefits-items img {
+    height: 200px;
+    width: 200px;
+}
+.benefits-items div {
+    display: flex;
+    margin: 15px;
+    width: 700px;
+}
+.benefits-items div {
+    display: flex;
+    margin: 15px;
+    width: 700px;
+}
+
+.benefits-summary {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.benefits-sub-heading {
+    font-size: large;
+    font-weight: bolder;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.benefits-summary p {
+    margin-left: 20px;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <title>Book Finder</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div>
+        <p class='heading'>Book Finder</p>
+        <div class='flexbox'>
+            <div>
+                <input id='book-name' type="text" class="form-control" placeholder="Book name" autocomplete="off"/>
+                <button onClick='getBooks()' class='search-btn'>Search</button>
+            </div>
+            <div class='dropdown'>
+                <ul id ='book-list' class="list">
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+<script src="js/index.js"></script>
+
+</html>
