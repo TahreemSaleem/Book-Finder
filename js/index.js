@@ -24,12 +24,7 @@ function getTitle(xmlDoc) {
 }
 
 function getBookDetail(){
-    const xmlDoc = localStorage.getItem('xml');
-    updateBookDetails($.parseXML(xmlDoc));
-}
-
-function updateBookDetails(xmlDoc){
-    console.log(xmlDoc)
+    const xmlDoc = $.parseXML(localStorage.getItem('xml'));
     let title = xmlDoc.getElementsByTagName("title")[0].innerHTML;
     let author = xmlDoc.getElementsByTagName("name")[0].innerHTML;
     let cover = xmlDoc.getElementsByTagName("image_url")[0].innerHTML;
@@ -39,6 +34,7 @@ function updateBookDetails(xmlDoc){
     document.getElementById("rating").innerHTML = rating;
     document.getElementById('cover').src = cover;
 }
+
 
 function getData(url, q, func) {
     let params = { key, q }
