@@ -12,16 +12,20 @@
         <div class='flexbox'>
             <div>
                 <input id='book-name' type="text" class="form-control" placeholder="Book name" autocomplete="off"/>
-                <button onClick='getBooks()' class='search-btn'>Search</button>
+                <button onClick='getBooks()' class='btn'>Search</button>
             </div>
             <div class='dropdown'>
-                <a onclick='previous()' href="#"><img id = 'left-arrow' class='arrow position-left' src="resources/arrow-grey.png"></a>
+                <a onclick='previousPage()' href="#"><img id = 'left-arrow' class='arrow position-left' src="resources/arrow-grey.png"></a>
                 <ul id ='book-list' class="list">
                 </ul>
-                <a onclick='next()' href="#"><img id = 'right-arrow' class='arrow reverse position-right' src="resources/arrow-grey.png"></a>
-
+                
+                <a onclick='nextPage()' href="#"><img id = 'right-arrow' class='arrow reverse position-right' src="resources/arrow-grey.png"></a>
+                
             </div>
-        </div>
+            <div class="flexbox">
+            <ul id ='result-count' class="list">
+                </ul></div>
+       </div>
     </div>
 </body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>

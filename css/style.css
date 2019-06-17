@@ -31,7 +31,8 @@ body {
     min-width: 0;
     max-width: 100%;
     flex-wrap: wrap;
-    flex-direction: column;
+    /* flex-direction: column; */
+    justify-content: center;
 }
 
 input[type="text"] {
@@ -41,13 +42,17 @@ input[type="text"] {
     border-radius: 3px;
 }
 
-.search-btn {
+.btn {
     border: 0;
     padding: 10px;
     font-size: large;
     color: #fff;
     background-color: #337AB7;
     cursor: pointer;
+}
+
+.btn-back {
+    margin-left: 600px;
 }
 
 .dropdown {
@@ -87,59 +92,64 @@ input[type="text"] {
     /* Add a hover effect to all links, except for headers */
 }
 
-.benefits-items {
+.book-items {
     flex-direction: column;
-    margin: 15px;
     align-content: center;
 }
 
-.benefits-items img {
+.book-items img {
     height: 200px;
     width: 200px;
 }
-.benefits-items div {
+
+.book-items div {
     display: flex;
-    margin: 15px;
-    width: 700px;
-}
-.benefits-items div {
-    display: flex;
-    margin: 15px;
+    margin-bottom: 15px;
     width: 700px;
 }
 
-.benefits-summary {
+.book-summary {
     flex-direction: column;
     align-items: flex-start;
 }
 
-.benefits-sub-heading {
+.book-sub-heading {
     font-size: large;
     font-weight: bolder;
     text-align: center;
     margin-bottom: 10px;
 }
 
-.benefits-summary p {
+.book-summary p {
     margin-left: 20px;
 }
 
-.arrow{
+.arrow {
     width: 30px;
-    height:30px;
+    height: 30px;
     visibility: hidden;
 }
-.reverse{
+
+.reverse {
     transform: scaleX(-1);
 }
-.position-right{
+
+.position-right {
     position: relative;
     right: 100px;
     top: 80px;
-
 }
-.position-left{
+
+.position-left {
     position: relative;
     left: 20px;
     top: 80px;
+}
+
+#book-name {
+    font-size: large;
+}
+
+#result-count {
+    margin: 10px;
 }

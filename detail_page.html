@@ -8,17 +8,16 @@
 </head>
 
 <body onload='getBookDetail(window.location.href)'>
-    <div>
-        <div class='flexbox benefits-items'>
-            <div>
-                <img id="cover"  alt="book-cover">
-                <div class='benefits-summary'>
-                    <p id='book-name'class='benefits-sub-heading'></p>
-                    <p id='author'class='benefits-sub-heading'></p>
-                    <p id ='rating'></p>
-                </div>
+    <div class='flexbox book-items'>
+        <div>
+            <img id="cover" alt="book-cover">
+            <div class='book-summary'>
+                <p id='book-name' class='book-sub-heading'></p>
+                <p id='author' class='book-sub-heading'></p>
+                <p id='rating'></p>
             </div>
         </div>
+        <button class='btn btn-back' onclick="window.location.href='index.html'">Go back</button>
     </div>
 </body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
