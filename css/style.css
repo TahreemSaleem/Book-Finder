@@ -123,3 +123,23 @@ input[type="text"] {
 .benefits-summary p {
     margin-left: 20px;
 }
+
+.arrow{
+    width: 30px;
+    height:30px;
+    visibility: hidden;
+}
+.reverse{
+    transform: scaleX(-1);
+}
+.position-right{
+    position: relative;
+    right: 100px;
+    top: 80px;
+
+}
+.position-left{
+    position: relative;
+    left: 20px;
+    top: 80px;
+}
