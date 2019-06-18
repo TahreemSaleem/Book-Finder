@@ -6,13 +6,13 @@
     <title>Book Finder</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body onload='getBooks()'>
     <div>
         <p class='heading'>Book Finder</p>
-        <div class='flexbox'>
+        <div class='flexbox flex-column'>
             <div>
                 <input id='book-name' type="text" class="form-control" placeholder="Book name" autocomplete="off"/>
-                <button onClick='getBooks()' class='btn'>Search</button>
+                <!-- <button onClick='getBooks()' class='btn'>Search</button> -->
             </div>
             <div class='dropdown'>
                 <a onclick='previousPage()' href="#"><img id = 'left-arrow' class='arrow position-left' src="resources/arrow-grey.png"></a>

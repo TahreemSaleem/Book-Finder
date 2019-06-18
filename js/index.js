@@ -1,7 +1,3 @@
-//const url = 'https://www.goodreads.com/search.xml?key=o3ZEitH9EZ1E7JYpQ6BHHQ&q=Ender%27s+Game&search=title';
-const search_url = new URL('https://www.goodreads.com/search.xml')
-const key = 'o3ZEitH9EZ1E7JYpQ6BHHQ'
-
 const items_per_page = 5;
 let total_items;
 let total_pages;
@@ -9,14 +5,19 @@ let titles;
 let page_index;
 
 function getBooks() {
-    const book = document.getElementById('book-name').value;
-    fetchData(search_url, book);
+    const book = document.getElementById('book-name');
+    const search_url = new URL('https://www.goodreads.com/search.xml');
+    const key = 'o3ZEitH9EZ1E7JYpQ6BHHQ';
+    let timeout = null;
+    book.onkeyup = function(e) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {fetchData(search_url, key, book.value)}, 700);
+    };
 }
 
-function fetchData(url, q) {
+function fetchData(url, key, q) {
     let params = { key, q }
     url.search = new URLSearchParams(params);
-    console.log(url);
     return fetch(url)
         .then(handleResponse)
         .then(getTitleList)
@@ -52,8 +53,8 @@ function getTitleList(xmlDoc) {
 
     return Promise.resolve();
 }
-
-function getArrayFromXML(xml){
+//
+function getArrayFromXML(xml) {
     let arr = [];
     for (item of xml) {
         arr.push(item.innerHTML);
@@ -73,7 +74,6 @@ function initPagination(items_size) {
     page_index = 0;
     total_items = items_size;
     total_pages = Math.ceil(total_items / items_per_page);
-    console.log('total_pages', total_pages)
     document.getElementById("left-arrow").style.visibility = 'hidden';
     document.getElementById("right-arrow").style.visibility = 'visible';
 }
@@ -88,7 +88,6 @@ function splitList(list) {
 function displayList() {
     let ul = document.getElementById("book-list");
     ul.innerHTML = "";
-    console.log('pageindex', page_index)
     for (title of titles[page_index]) {
         let li = document.createElement('li');
         let a = document.createElement('a');
@@ -107,7 +106,6 @@ function nextPage() {
         displayList();
     }
     if (page_index == total_pages - 1) {
-        console.log('here')
         document.getElementById("right-arrow").style.visibility = 'hidden';
     }
     if (document.getElementById("left-arrow").style.visibility == 'hidden') {
@@ -138,5 +136,5 @@ function getBookDetail() {
     document.getElementById("book-name").innerHTML = title;
     document.getElementById("author").innerHTML = author;
     document.getElementById("rating").innerHTML = rating;
-    document.getElementById('cover').src = cover;
+    document.getElementById("cover").src = cover;
 }
