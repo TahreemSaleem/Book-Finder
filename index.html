@@ -15,11 +15,11 @@
                 <!-- <button onClick='getBooks()' class='btn'>Search</button> -->
             </div>
             <div class='dropdown'>
-                <a onclick='previousPage()' href="#"><img id = 'left-arrow' class='arrow position-left' src="resources/arrow-grey.png"></a>
+                <a onclick='paginate.previousPage()' href="#"><img id = 'left-arrow' class='arrow position-left' src="resources/arrow-grey.png"></a>
                 <ul id ='book-list' class="list">
                 </ul>
                 
-                <a onclick='nextPage()' href="#"><img id = 'right-arrow' class='arrow reverse position-right' src="resources/arrow-grey.png"></a>
+                <a onclick='paginate.nextPage()' href="#"><img id = 'right-arrow' class='arrow reverse position-right' src="resources/arrow-grey.png"></a>
                 
             </div>
             <div class="flexbox">
@@ -31,5 +31,5 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
 <script src="js/index.js"></script>
-
+<script src="js/pagination.js"></script>
 </html>
