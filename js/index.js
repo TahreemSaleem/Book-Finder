@@ -11,12 +11,12 @@ function getBooks() {
     let timeout = null;
     book.onkeyup = function(e) {
         clearTimeout(timeout);
-        timeout = setTimeout(() => {fetchData(search_url, key, book.value)}, 700);
+        timeout = setTimeout(() => { fetchData(search_url, key, book.value) }, 700);
     };
 }
 
 function fetchData(url, key, q) {
-    let params = { key, q }
+    const params = { key, q }
     url.search = new URLSearchParams(params);
     return fetch(url)
         .then(handleResponse)
@@ -39,33 +39,31 @@ function handleResponse(response) {
 
 function getTitleList(xmlDoc) {
     localStorage.setItem('xml', new XMLSerializer().serializeToString(xmlDoc));
-    let titles_xml = xmlDoc.getElementsByTagName("title");
-    let result_count = xmlDoc.getElementsByTagName("total-results")[0].innerHTML;
-
+    const titles_xml = xmlDoc.getElementsByTagName("title");
+    const result_count = xmlDoc.getElementsByTagName("total-results")[0].innerHTML;
     if (titles_xml.length == 0) {
         return Promise.reject(titles_xml);
     }
-    let titles_arr = getArrayFromXML(titles_xml)
-    titles = splitList(titles_arr);
-    appendCount(result_count);
-    initPagination(titles_arr.length);
-    displayList();
+    titles = [...titles_xml].map(item=>item.innerHTML).reduce((resultArray, item, index) => { 
+        const chunkIndex = Math.floor(index/items_per_page);
+        if(!resultArray[chunkIndex]) {
+          resultArray[chunkIndex] = []
+        }
+        resultArray[chunkIndex].push(item);
+        return resultArray
+      }, []);
 
+    appendCount(result_count);
+    initPagination(titles_xml.length);
+    displayList();
     return Promise.resolve();
 }
-//
-function getArrayFromXML(xml) {
-    let arr = [];
-    for (item of xml) {
-        arr.push(item.innerHTML);
-    }
-    return arr;
-}
+
 
 function appendCount(count) {
-    let ul = document.getElementById("result-count");
+    const ul = document.getElementById("result-count");
     ul.innerHTML = "";
-    let li = document.createElement("li");
+    const li = document.createElement("li");
     li.innerHTML = `Total Results: ${count}`
     ul.appendChild(li);
 }
@@ -78,26 +76,19 @@ function initPagination(items_size) {
     document.getElementById("right-arrow").style.visibility = 'visible';
 }
 
-function splitList(list) {
-    let splited = []
-    for (var i = 0; i < list.length; i += items_per_page)
-        splited.push(list.slice(i, i + items_per_page));
-    return splited;
-}
 
 function displayList() {
     let ul = document.getElementById("book-list");
     ul.innerHTML = "";
     for (title of titles[page_index]) {
-        let li = document.createElement('li');
-        let a = document.createElement('a');
-        let linkText = document.createTextNode(title);
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        const linkText = document.createTextNode(title);
         a.appendChild(linkText);
         a.href = 'detail_page.html';
         li.appendChild(a);
         ul.appendChild(li);
     }
-
 }
 
 function nextPage() {
@@ -111,7 +102,6 @@ function nextPage() {
     if (document.getElementById("left-arrow").style.visibility == 'hidden') {
         document.getElementById("left-arrow").style.visibility = 'visible';
     }
-
 }
 
 function previousPage() {
@@ -129,10 +119,10 @@ function previousPage() {
 
 function getBookDetail() {
     const xmlDoc = $.parseXML(localStorage.getItem('xml'));
-    let title = xmlDoc.getElementsByTagName("title")[0].innerHTML;
-    let author = xmlDoc.getElementsByTagName("name")[0].innerHTML;
-    let cover = xmlDoc.getElementsByTagName("image_url")[0].innerHTML;
-    let rating = xmlDoc.getElementsByTagName("average_rating")[0].innerHTML;
+    const title = xmlDoc.getElementsByTagName("title")[0].innerHTML;
+    const author = xmlDoc.getElementsByTagName("name")[0].innerHTML;
+    const cover = xmlDoc.getElementsByTagName("image_url")[0].innerHTML;
+    const rating = xmlDoc.getElementsByTagName("average_rating")[0].innerHTML;
     document.getElementById("book-name").innerHTML = title;
     document.getElementById("author").innerHTML = author;
     document.getElementById("rating").innerHTML = rating;
